@@ -68,4 +68,18 @@ describe 'Items API' do
     expect(created_item.unit_price).to eq(item_params[:unit_price])
     expect(created_item.merchant_id).to eq(item_params[:merchant_id])
   end
+
+  it 'returns an error if any attribute is missing when trying to create an item' do
+    id = create(:merchant).id
+
+    item_params = {
+      name: 'Widget',
+      description: 'High quality widget',
+      merchant_id: id
+    }
+    headers = { 'CONTENT_TYPE' => 'application/json' }
+
+    post '/api/v1/items', headers: headers, params: JSON.generate(item: item_params)
+    expect(response).to have_http_status(422)
+  end
 end
