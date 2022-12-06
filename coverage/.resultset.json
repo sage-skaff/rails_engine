@@ -218,9 +218,9 @@
         "lines": [
           1,
           1,
-          1,
-          1,
-          1,
+          4,
+          4,
+          4,
           1,
           null,
           null
@@ -230,7 +230,7 @@
         "lines": [
           1,
           1,
-          5,
+          4,
           null,
           null
         ]
@@ -241,13 +241,19 @@
           1,
           1,
           1,
+          1,
           null,
           null,
           null
         ]
       },
-      "/Users/sageskaff/turing/3module/projects/rails_engine/app/models/merchant.rb": {
+      "/Users/sageskaff/turing/3module/projects/rails_engine/app/models/item.rb": {
         "lines": [
+          1,
+          1,
+          null,
+          1,
+          1,
           1,
           1,
           null
@@ -260,13 +266,16 @@
           null
         ]
       },
-      "/Users/sageskaff/turing/3module/projects/rails_engine/app/controllers/api/v1/merchants_controller.rb": {
+      "/Users/sageskaff/turing/3module/projects/rails_engine/app/models/merchant.rb": {
         "lines": [
           1,
           1,
+          null
+        ]
+      },
+      "/Users/sageskaff/turing/3module/projects/rails_engine/app/controllers/api/v1/items_controller.rb": {
+        "lines": [
           1,
-          null,
-          null,
           1,
           1,
           null,
@@ -279,7 +288,7 @@
           null
         ]
       },
-      "/Users/sageskaff/turing/3module/projects/rails_engine/app/serializers/merchant_serializer.rb": {
+      "/Users/sageskaff/turing/3module/projects/rails_engine/app/serializers/item_serializer.rb": {
         "lines": [
           1,
           1,
@@ -288,6 +297,6 @@
         ]
       }
     },
-    "timestamp": 1670290025
+    "timestamp": 1670292328
   }
 }
