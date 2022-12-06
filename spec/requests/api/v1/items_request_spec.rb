@@ -82,4 +82,18 @@ describe 'Items API' do
     post '/api/v1/items', headers: headers, params: JSON.generate(item: item_params)
     expect(response).to have_http_status(422)
   end
+
+  it 'can update an existing item' do
+    id = create(:item).id
+    previous_name = Item.last.name
+    item_params = { name: 'New Widget Name' }
+    headers = { 'CONTENT_TYPE' => 'application/json' }
+
+    patch "/api/v1/items/#{id}", headers: headers, params: JSON.generate({ item: item_params })
+    item = Item.find_by(id: id)
+
+    expect(response).to be_successful
+    expect(item.name).to_not eq(previous_name)
+    expect(item.name).to eq('New Widget Name')
+  end
 end
