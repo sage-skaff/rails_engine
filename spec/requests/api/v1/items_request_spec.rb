@@ -96,4 +96,13 @@ describe 'Items API' do
     expect(item.name).to_not eq(previous_name)
     expect(item.name).to eq('New Widget Name')
   end
+
+  it 'can destroy an existing item' do
+    id = create(:item).id
+
+    expect { delete "/api/v1/items/#{id}" }.to change(Item, :count).by(-1)
+
+    expect(response).to be_successful
+    expect(response).to have_http_status(204)
+  end
 end
