@@ -105,4 +105,28 @@ describe 'Items API' do
     expect(response).to be_successful
     expect(response).to have_http_status(204)
   end
+
+  it 'returns all merchant data associated with an item' do
+    merchant1 = create(:merchant)
+    merchant2 = create(:merchant)
+    item1 = create(:item, merchant: merchant1)
+    item2 = create(:item, merchant: merchant2)
+
+    get "/api/v1/items/#{item1.id}/merchant"
+
+    expect(response).to be_successful
+
+    item1_merchant = JSON.parse(response.body, symbolize_names: true)
+    expect(item1_merchant[:data]).to have_key(:id)
+    expect(item1_merchant[:data][:id]).to be_an(String)
+
+    expect(item1_merchant[:data][:attributes]).to have_key(:name)
+    expect(item1_merchant[:data][:attributes][:name]).to be_an(String)
+  end
+
+  it 'returns an error status if item id does not exist' do
+    get '/api/v1/items/8923987297/merchant'
+
+    expect(response).to have_http_status(404)
+  end
 end
