@@ -52,4 +52,10 @@ describe 'Merchants API' do
     expect(merchant1_items[:data][0][:attributes][:merchant_id]).to eq(1)
     expect(merchant1_items[:data][1][:attributes][:merchant_id]).to eq(1)
   end
+
+  it 'returns an error status if merchant id does not exist' do
+    get '/api/v1/merchants/8923987297/items'
+
+    expect(response).to have_http_status(404)
+  end
 end
