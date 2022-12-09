@@ -122,10 +122,17 @@ describe 'Items API' do
 
     expect(item1_merchant[:data][:attributes]).to have_key(:name)
     expect(item1_merchant[:data][:attributes][:name]).to be_an(String)
+    expect(item1_merchant[:data][:attributes][:name]).to eq(merchant1.name)
   end
 
   it 'returns an error status if item id does not exist' do
     get '/api/v1/items/8923987297/merchant'
+
+    expect(response).to have_http_status(404)
+  end
+
+  it 'returns an error status if string instead of integer' do
+    get '/api/v1/items/string-instead-of-integer/merchant'
 
     expect(response).to have_http_status(404)
   end
